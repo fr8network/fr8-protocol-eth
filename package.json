@@ -1,0 +1,28 @@
+{
+  "name": "fr8-protocol-eth",
+  "version": "0.1",
+  "description": "Fr8 Protocol Smart Contracts",
+  "scripts": {
+    "prettier": "node_modules/.bin/prettier \"./src/**/*.js\" --write",
+    "build-contracts": "sol-merger './contracts/*.sol' ./build/merged"
+  },
+  "dependencies": {
+    "dotenv": "^5.0.1",
+    "openzeppelin-solidity": "1.9.0",
+    "sol-merger": "^0.1.2",
+    "truffle": "^4.1.9",
+    "truffle-hdwallet-provider-privkey": "^0.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "prettier": "^1.12.1"
+  }
+}
