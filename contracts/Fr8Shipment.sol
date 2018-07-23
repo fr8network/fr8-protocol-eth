@@ -2,7 +2,7 @@ pragma solidity ^0.4.24;
 
 /**
  * @title Fr8Shipment v0.0.1
- * @dev The Fr8Shipment Contract ----------------------
+ * @dev A basic Fr8Shipment Smart Contract
  */
 
 import "./Fr8Permissioned.sol";
@@ -21,7 +21,6 @@ contract Fr8Shipment is Fr8Permissioned, LockedToDataHash, HoldsSensorData {
    */
   constructor(address _protocolAddress) Fr8Permissioned(_protocolAddress) public payable {
     protocolAddress = _protocolAddress;
-    owners[msg.sender] = true;
   }
 
   /**
@@ -90,25 +89,25 @@ contract Fr8Shipment is Fr8Permissioned, LockedToDataHash, HoldsSensorData {
    * @dev Updates hash of payment receipts.
    * @param _dataHash 256 bit hash of flattened payment receipt data.
    */
-  function setPaymentReceiptsHash(bytes32 _datahash) public onlyProtocol isActive {
-    paymentReceiptsHash = _datahash;
-    emit PaymentReceiptsHashUpdated(msg.sender, _datahash);
+  function setPaymentReceiptsHash(bytes32 _dataHash) public onlyProtocol isActive {
+    paymentReceiptsHash = _dataHash;
+    emit PaymentReceiptsHashUpdated(msg.sender, _dataHash);
   }
 
   /**
    * @dev Updates hash of notification receipts.
    * @param _dataHash 256 bit hash of flattened notification receipt data.
    */
-  function setNotificationReceiptsHash(bytes32 _datahash) public onlyProtocol isActive {
-    notificationReceiptsHash = _datahash;
-    emit NotificationReceiptsHashUpdated(msg.sender, _datahash);
+  function setNotificationReceiptsHash(bytes32 _dataHash) public onlyProtocol isActive {
+    notificationReceiptsHash = _dataHash;
+    emit NotificationReceiptsHashUpdated(msg.sender, _dataHash);
   }
 
   /**
    * @dev Updates data hash of off-chain data. Overrides super to add modifiers.
-   * @param _dataHash 256 bit hash of flattened off-chain shipmetn data.
+   * @param _dataHash 256 bit hash of flattened off-chain shipment data.
    */
-  function setDataHash(bytes32 _datahash) public onlyEditor isActive {
-    super.setDataHash(_datahash);
+  function setDataHash(bytes32 _dataHash) public onlyEditor isActive {
+    super.setDataHash(_dataHash);
   }
 }
