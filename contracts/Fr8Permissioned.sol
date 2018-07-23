@@ -3,7 +3,7 @@ pragma solidity ^0.4.24;
 /**
  * @title Fr8Permissioned v0.0.1
  * @dev The Fr8Permissioned contract has an owner address, and provides basic authorization control
- * functions, this simplifies the implementation of "user permissions".
+ *      functions, this simplifies the implementation of "user permissions".
  */
 
 contract Fr8Permissioned {
@@ -13,7 +13,7 @@ contract Fr8Permissioned {
   mapping (address => bool) public readers;
 
   /**
-   * @dev Event emitted after any calls that modify permissions
+   * @dev Event emitted after any calls that modify permissions.
    */
   event PermissionsChanged(bytes32 _role, bytes32 _action, address[] _addresses);
 
@@ -104,6 +104,7 @@ contract Fr8Permissioned {
       owners[_owners[i]] = false;
     }
     assert(owners[msg.sender]);
+    emit PermissionsChanged("OWNER", "REMOVED", _owners);
   }
 
   /**
@@ -114,6 +115,7 @@ contract Fr8Permissioned {
     for (uint i = 0; i < _editors.length; i++) {
       editors[_editors[i]] = false;
     }
+    emit PermissionsChanged("EDITOR", "REMOVED", _editors);
   }
 
   /**
@@ -124,5 +126,6 @@ contract Fr8Permissioned {
     for (uint i = 0; i < _readers.length; i++) {
       readers[_readers[i]] = false;
     }
+    emit PermissionsChanged("READER", "REMOVED", _readers);
   }
 }
