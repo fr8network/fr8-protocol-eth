@@ -13,11 +13,6 @@ contract Fr8Permissioned {
   mapping (address => bool) public readers;
 
   /**
-   * @dev Event emitted after any calls that modify permissions.
-   */
-  event PermissionsChanged(bytes32 _role, bytes32 _action, address[] _addresses);
-
-  /**
    * @dev The Fr8Permissioned constructor sender account to the owners mapping.
    * @param _protocolAddress Fr8 Protocol Address.
    */
@@ -25,6 +20,11 @@ contract Fr8Permissioned {
     protocolAddress = _protocolAddress;
     owners[msg.sender] = true;
   }
+
+  /**
+   * @dev Event emitted after any calls that modify permissions.
+   */
+  event PermissionsChanged(bytes32 _role, bytes32 _action, address[] _addresses);
 
   /**
    * @dev Throws if called by any account other than the Fr8 Protocol.
@@ -43,10 +43,10 @@ contract Fr8Permissioned {
   }
 
   /**
-   * @dev Throws if called by any account other than an editor.
+   * @dev Throws if called by any account other than an owner or editor.
    */
   modifier onlyEditor() {
-    require(editors[msg.sender]);
+    require(owners[msg.sender] || editors[msg.sender]);
     _;
   }
 

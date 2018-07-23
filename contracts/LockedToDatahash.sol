@@ -10,12 +10,12 @@ contract LockedToDataHash {
   bytes32 public dataHash;
 
   /**
-   * @dev Event emitted after any calls that modify permissions.
+   * @dev Event emitted after the data has has been updated.
    */
   event DataHashUpdated(address _sender, bytes32 _dataHash);
 
   /**
-   * @dev Updates the data hash.
+   * @dev Updates the data hash property.
    * @param _dataHash New hash.
    */
   function setDataHash(bytes32 _dataHash) public {
