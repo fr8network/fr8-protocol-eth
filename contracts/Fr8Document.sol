@@ -1,8 +1,9 @@
 pragma solidity ^0.4.24;
 
 /**
- * @title Fr8Document v0.0.1
- * @dev A basic Fr8Document Smart Contract
+ * @title Fr8Document
+ * @dev v0.0.1
+ * @notice A basic Fr8Document Smart Contract
  */
 
 import "./Fr8Permissioned.sol";
@@ -17,12 +18,12 @@ contract Fr8Document is Fr8Permissioned, LockedToDataHash {
   AttachmentPair[] public attachments;
 
   /**
-   * @dev Event emitted after a new attachment has been added to this document.
+   * @notice Event emitted after a new attachment has been added to this document.
    */
   event AttachmentAdded(string _attachmentRef, bytes32 _attachmentHash);
 
   /**
-   * @dev Updates data hash of off-chain data. Overrides super to add modifiers.
+   * @notice Updates data hash of off-chain data. Overrides super to add modifiers.
    * @param _dataHash 256 bit hash of flattened off-chain document data.
    */
   function setDataHash(bytes32 _dataHash) public onlyEditor {
@@ -30,7 +31,7 @@ contract Fr8Document is Fr8Permissioned, LockedToDataHash {
   }
 
   /**
-   * @dev Adds the hash of an attachment to this document.
+   * @notice Adds the hash of an attachment to this document.
    * @param _attachmentRef Off-chain reference to the attachment.
    * @param _attachmentHash 256 bit hash of the attachment.
    */

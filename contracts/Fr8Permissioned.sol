@@ -1,9 +1,10 @@
 pragma solidity ^0.4.24;
 
 /**
- * @title Fr8Permissioned v0.0.1
- * @dev The Fr8Permissioned contract has an owner address, and provides basic authorization control
- *      functions, this simplifies the implementation of "user permissions".
+ * @title Fr8Permissioned
+ * @dev v0.0.1
+ * @notice The Fr8Permissioned contract has an owner address, and provides basic authorization control
+ *         functions, this simplifies the implementation of "user permissions".
  */
 
 contract Fr8Permissioned {
@@ -13,7 +14,7 @@ contract Fr8Permissioned {
   mapping (address => bool) public readers;
 
   /**
-   * @dev The Fr8Permissioned constructor sender account to the owners mapping.
+   * @notice The Fr8Permissioned constructor sender account to the owners mapping.
    * @param _protocolAddress Fr8 Protocol Address.
    */
   constructor(address _protocolAddress) public {
@@ -22,12 +23,12 @@ contract Fr8Permissioned {
   }
 
   /**
-   * @dev Event emitted after any calls that modify permissions.
+   * @notice Event emitted after any calls that modify permissions.
    */
   event PermissionsChanged(bytes32 _role, bytes32 _action, address[] _addresses);
 
   /**
-   * @dev Throws if called by any account other than the Fr8 Protocol.
+   * @notice Throws if called by any account other than the Fr8 Protocol.
    */
   modifier onlyProtocol() {
     require(msg.sender == protocolAddress);
@@ -35,7 +36,7 @@ contract Fr8Permissioned {
   }
 
   /**
-   * @dev Throws if called by any account other than an owner.
+   * @notice Throws if called by any account other than an owner.
    */
   modifier onlyOwner() {
     require(owners[msg.sender]);
@@ -43,7 +44,7 @@ contract Fr8Permissioned {
   }
 
   /**
-   * @dev Throws if called by any account other than an owner or editor.
+   * @notice Throws if called by any account other than an owner or editor.
    */
   modifier onlyEditor() {
     require(owners[msg.sender] || editors[msg.sender]);
@@ -51,7 +52,7 @@ contract Fr8Permissioned {
   }
 
   /**
-   * @dev Allows an owner to add other owners.
+   * @notice Allows an owner to add other owners.
    * @param _owners Array of addresses to add to the owners mapping.
    */
   function addOwners(address[] _owners) public onlyOwner {
@@ -62,7 +63,7 @@ contract Fr8Permissioned {
   }
 
   /**
-   * @dev Allows an owner to add editors.
+   * @notice Allows an owner to add editors.
    * @param _editors Array of addresses to add to the editors mapping.
    */
   function addEditors(address[] _editors) public onlyOwner {
@@ -73,7 +74,7 @@ contract Fr8Permissioned {
   }
 
   /**
-   * @dev Allows an owner to add readers.
+   * @notice Allows an owner to add readers.
    * @param _readers Array of addresses to add to the Readers mapping.
    */
   function addReaders(address[] _readers) public onlyOwner {
@@ -84,7 +85,7 @@ contract Fr8Permissioned {
   }
 
   /**
-   * @dev Allows an owner to add readers.
+   * @notice Allows an owner to add readers.
    * @param _protocolAddress Fr8 Protocol Address.
    */
   function setProtocolAddress(address _protocolAddress) public onlyOwner {
@@ -95,7 +96,7 @@ contract Fr8Permissioned {
   }
 
   /**
-   * @dev Allows an owner to remove other owners. The sender cannot remove themselves.
+   * @notice Allows an owner to remove other owners. The sender cannot remove themselves.
    * @param _owners Array of addresses to remove from the owners mapping.
    */
   function removeOwners(address[] _owners) public onlyOwner {
@@ -108,7 +109,7 @@ contract Fr8Permissioned {
   }
 
   /**
-   * @dev Allows an owner to remove editors.
+   * @notice Allows an owner to remove editors.
    * @param _editors Array of addresses to remove from the editors mapping.
    */
   function removeEditors(address[] _editors) public onlyOwner {
@@ -119,7 +120,7 @@ contract Fr8Permissioned {
   }
 
   /**
-   * @dev Allows an owner to remove readers.
+   * @notice Allows an owner to remove readers.
    * @param _readers Array of addresses to remove from the readers mapping.
    */
   function removeReaders(address[] _readers) public onlyOwner {

@@ -1,8 +1,9 @@
 pragma solidity ^0.4.24;
 
 /**
- * @title Fr8Shipment v0.0.1
- * @dev A basic Fr8Shipment Smart Contract
+ * @title Fr8Shipment
+ * @dev v0.0.1
+ * @notice A basic Fr8Shipment Smart Contract
  */
 
 import "./Fr8Permissioned.sol";
@@ -16,7 +17,7 @@ contract Fr8Shipment is Fr8Permissioned, LockedToDataHash, HoldsSensorData {
   bytes32 public notificationReceiptsHash;
 
   /**
-   * @dev The Fr8Permissioned constructor sender account to the owners mapping.
+   * @notice The Fr8Permissioned constructor sender account to the owners mapping.
    * @param _protocolAddress Fr8 Protocol Address.
    */
   constructor(address _protocolAddress) Fr8Permissioned(_protocolAddress) public payable {
@@ -24,28 +25,28 @@ contract Fr8Shipment is Fr8Permissioned, LockedToDataHash, HoldsSensorData {
   }
 
   /**
-   * @dev Event emitted after any calls that modify permissions.
+   * @notice Event emitted after any calls that modify permissions.
    */
   event ShipmentActivated(address _sender);
 
   /**
-   * @dev Event emitted after any calls that modify permissions.
+   * @notice Event emitted after any calls that modify permissions.
    */
   event ShipmentTerminated(address _sender);
 
   /**
-   * @dev Event emitted after the paymentReceiptsHash has been updated.
+   * @notice Event emitted after the paymentReceiptsHash has been updated.
    */
   event PaymentReceiptsHashUpdated(address _sender, bytes32 _dataHash);
 
   /**
-   * @dev Event emitted after the notificationReceiptsHash has been updated.
+   * @notice Event emitted after the notificationReceiptsHash has been updated.
    */
   event NotificationReceiptsHashUpdated(address _sender, bytes32 _dataHash);
 
 
   /**
-   * @dev Throws if shipment has not been activated.
+   * @notice Throws if shipment has not been activated.
    */
   modifier isActive() {
     require(hasBeenActivated);
@@ -53,7 +54,7 @@ contract Fr8Shipment is Fr8Permissioned, LockedToDataHash, HoldsSensorData {
   }
 
   /**
-   * @dev Adds uploaders to the sensorDataUploaders mapping. Overrides super to add modifiers.
+   * @notice Adds uploaders to the sensorDataUploaders mapping. Overrides super to add modifiers.
    * @param _uploaders Array of addresses to add to the sensorDataUploaders mapping.
    */
   function addSensorDataUploaders(address[] _uploaders) public onlyEditor isActive {
@@ -61,7 +62,7 @@ contract Fr8Shipment is Fr8Permissioned, LockedToDataHash, HoldsSensorData {
   }
 
   /**
-   * @dev Removes uploaders from the sensorDataUploaders mapping. Overrides super to add modifiers.
+   * @notice Removes uploaders from the sensorDataUploaders mapping. Overrides super to add modifiers.
    * @param _uploaders Array of addresses to remove from the sensorDataUploaders mapping.
    */
   function removeSensorDataUploaders(address[] _uploaders) public onlyEditor isActive {
@@ -69,7 +70,7 @@ contract Fr8Shipment is Fr8Permissioned, LockedToDataHash, HoldsSensorData {
   }
 
   /**
-   * @dev Marks shipment as active.
+   * @notice Marks shipment as active.
    * TODO: Check token balance of shipment.
    */
   function activate() public onlyEditor {
@@ -78,7 +79,7 @@ contract Fr8Shipment is Fr8Permissioned, LockedToDataHash, HoldsSensorData {
   }
 
   /**
-   * @dev Marks shipment as terminated.
+   * @notice Marks shipment as terminated.
    */
   function terminate() public onlyEditor isActive {
     hasBeenTerminated = true;
@@ -86,7 +87,7 @@ contract Fr8Shipment is Fr8Permissioned, LockedToDataHash, HoldsSensorData {
   }
 
   /**
-   * @dev Updates hash of payment receipts.
+   * @notice Updates hash of payment receipts.
    * @param _dataHash 256 bit hash of flattened payment receipt data.
    */
   function setPaymentReceiptsHash(bytes32 _dataHash) public onlyProtocol isActive {
@@ -95,7 +96,7 @@ contract Fr8Shipment is Fr8Permissioned, LockedToDataHash, HoldsSensorData {
   }
 
   /**
-   * @dev Updates hash of notification receipts.
+   * @notice Updates hash of notification receipts.
    * @param _dataHash 256 bit hash of flattened notification receipt data.
    */
   function setNotificationReceiptsHash(bytes32 _dataHash) public onlyProtocol isActive {
@@ -104,7 +105,7 @@ contract Fr8Shipment is Fr8Permissioned, LockedToDataHash, HoldsSensorData {
   }
 
   /**
-   * @dev Updates data hash of off-chain data. Overrides super to add modifiers.
+   * @notice Updates data hash of off-chain data. Overrides super to add modifiers.
    * @param _dataHash 256 bit hash of flattened off-chain shipment data.
    */
   function setDataHash(bytes32 _dataHash) public onlyEditor isActive {
