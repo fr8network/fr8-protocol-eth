@@ -18,6 +18,14 @@ contract Fr8Document is Fr8Permissioned, LockedToDataHash {
   AttachmentPair[] public attachments;
 
   /**
+   * @notice The Fr8Document constructor sender account to the owners mapping.
+   * @param _protocolAddress Fr8 Protocol Address.
+   */
+  constructor(address _protocolAddress) Fr8Permissioned(_protocolAddress) public payable {
+    protocolAddress = _protocolAddress;
+  }
+
+  /**
    * @notice Event emitted after a new attachment has been added to this document.
    */
   event AttachmentAdded(string _attachmentRef, bytes32 _attachmentHash);

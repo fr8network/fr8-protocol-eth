@@ -17,7 +17,7 @@ contract Fr8Shipment is Fr8Permissioned, LockedToDataHash, HoldsSensorData {
   bytes32 public notificationReceiptsHash;
 
   /**
-   * @notice The Fr8Permissioned constructor sender account to the owners mapping.
+   * @notice The Fr8Shipment constructor sender account to the owners mapping.
    * @param _protocolAddress Fr8 Protocol Address.
    */
   constructor(address _protocolAddress) Fr8Permissioned(_protocolAddress) public payable {
