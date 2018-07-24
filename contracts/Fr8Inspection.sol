@@ -2,7 +2,7 @@ pragma solidity ^0.4.24;
 
 /***
  * @title Fr8Inspection
- * @dev 0.0.1
+ * @dev v0.0.1
  * @notice A basic Fr8Document Smart Contract
  */
 
