@@ -11,11 +11,12 @@ import "./LockedToDataHash.sol";
 
 contract Fr8Document is Fr8Permissioned, LockedToDataHash {
   struct AttachmentPair {
-    string attachmentId;
+    string attachmentRef;
     bytes32 attachmentHash;
   }
 
   AttachmentPair[] public attachments;
+  uint32 public numAttachments = 0;
 
   /**
    * @notice The Fr8Document constructor sender account to the owners mapping.
@@ -45,6 +46,7 @@ contract Fr8Document is Fr8Permissioned, LockedToDataHash {
    */
   function addAttachment(string _attachmentRef, bytes32 _attachmentHash) public onlyEditor {
     attachments.push(AttachmentPair(_attachmentRef, _attachmentHash));
+    numAttachments++;
     emit AttachmentAdded(_attachmentRef, _attachmentHash);
   }
 }

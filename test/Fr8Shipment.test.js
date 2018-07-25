@@ -5,12 +5,10 @@ const Fr8Shipment = artifacts.require('Fr8Shipment');
 
 contract('Fr8Shipment Test', async (accounts) => {
   const deployer = accounts[0]; // Also owner
-  const owner = accounts[1];
-  const editor = accounts[2];
-  const data = accounts[3];
-  const protocol = accounts[4];
-  const guest = accounts[5];
-  const dataUploader = accounts[6];
+  const editor = accounts[1];
+  const protocol = accounts[2];
+  const guest = accounts[3];
+  const dataUploader = accounts[4];
   const dataToHash = 'fr8fr8fr8fr8fr8';
   const hash = crypto.createHash('sha256');
   hash.update(dataToHash); // Hash dataToHash String
@@ -79,20 +77,20 @@ contract('Fr8Shipment Test', async (accounts) => {
     await expectThrow(testedFn());
   });
 
-  it('should allow an editor to add and remove a data uploader', async () => {
+  it('should allow an editor to add and remove a sensor data uploader', async () => {
     let shipmentInstance = await Fr8Shipment.new(protocol, { from: deployer });
     await shipmentInstance.activate({ from: deployer });
     await shipmentInstance.addEditors([editor], { from: deployer });
     await shipmentInstance.addSensorDataUploaders([dataUploader], { from: editor });
     let isUploaderValid = await shipmentInstance.sensorDataUploaders(dataUploader);
-    assert(isUploaderValid, 'The uploader has not been added successfully');
+    assert(isUploaderValid, 'The sensor data  has not been added successfully');
 
     await shipmentInstance.removeSensorDataUploaders([dataUploader], { from: editor });
     isUploaderValid = await shipmentInstance.sensorDataUploaders(dataUploader);
-    assert(!isUploaderValid, 'The uploader has not been removed successfully');
+    assert(!isUploaderValid, 'The sensor data uploader has not been removed successfully');
   });
 
-  it('should not allow a non-editor to add a data uploader', async () => {
+  it('should not allow a non-editor to add a sensor data uploader', async () => {
     let shipmentInstance = await Fr8Shipment.new(protocol, { from: deployer });
     await shipmentInstance.activate({ from: deployer });
     let testedFn = async function() {
