@@ -3,7 +3,7 @@ import expectThrow from '../helpers/expectThrow';
 const Fr8Permissioned = artifacts.require('Fr8Permissioned');
 
 contract('Fr8Permissioned Test', async (accounts) => {
-  const deployer = accounts[0];
+  const deployer = accounts[0]; // Also owner
   const owner = accounts[1];
   const editor = accounts[2];
   const reader = accounts[3];
