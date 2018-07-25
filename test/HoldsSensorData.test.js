@@ -14,7 +14,7 @@ contract('HoldsSensorData Test', async (accounts) => {
   const dataHash = `0x${hash.digest('hex')}`; // Need to add '0x' to indicate hex
 
   it('should allow an account to add and remove a data uploader', async () => {
-    let holdsSensorDataInstance = await HoldsSensorData.new();
+    let holdsSensorDataInstance = await HoldsSensorData.new({ from: deployer });
     await holdsSensorDataInstance.addSensorDataUploaders([dataUploader], { from: deployer });
     let isUploaderValid = await holdsSensorDataInstance.sensorDataUploaders(dataUploader);
     assert(isUploaderValid, 'The uploader has not been added successfully');
@@ -25,7 +25,7 @@ contract('HoldsSensorData Test', async (accounts) => {
   });
 
   it('should allow a data uploader to add a data collection', async () => {
-    let holdsSensorDataInstance = await HoldsSensorData.new();
+    let holdsSensorDataInstance = await HoldsSensorData.new({ from: deployer });
     await holdsSensorDataInstance.addSensorDataUploaders([dataUploader], { from: deployer });
     await holdsSensorDataInstance.addDataCollection(dataRef, dataHash, { from: dataUploader });
     let dataCollectionsLength = await holdsSensorDataInstance.numDataCollections(); // Big Number returned
@@ -36,8 +36,8 @@ contract('HoldsSensorData Test', async (accounts) => {
   });
 
   it('should not allow a non-uploader to add a data collection', async () => {
+    let holdsSensorDataInstance = await HoldsSensorData.new({ from: deployer });
     let testedFn = async function() {
-      let holdsSensorDataInstance = await HoldsSensorData.new();
       await holdsSensorDataInstance.addDataCollection(dataRef, dataHash, { from: guest });
     };
     await expectThrow(testedFn());
