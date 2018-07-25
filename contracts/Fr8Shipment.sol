@@ -49,24 +49,8 @@ contract Fr8Shipment is Fr8Permissioned, LockedToDataHash, HoldsSensorData {
    * @notice Throws if shipment has not been activated.
    */
   modifier isActive() {
-    require(hasBeenActivated);
+    require(hasBeenActivated && !hasBeenTerminated);
     _;
-  }
-
-  /**
-   * @notice Adds uploaders to the sensorDataUploaders mapping. Overrides super to add modifiers.
-   * @param _uploaders Array of addresses to add to the sensorDataUploaders mapping.
-   */
-  function addSensorDataUploaders(address[] _uploaders) public onlyEditor isActive {
-    super.addSensorDataUploaders(_uploaders);
-  }
-
-  /**
-   * @notice Removes uploaders from the sensorDataUploaders mapping. Overrides super to add modifiers.
-   * @param _uploaders Array of addresses to remove from the sensorDataUploaders mapping.
-   */
-  function removeSensorDataUploaders(address[] _uploaders) public onlyEditor isActive {
-    super.removeSensorDataUploaders(_uploaders);
   }
 
   /**
@@ -84,6 +68,22 @@ contract Fr8Shipment is Fr8Permissioned, LockedToDataHash, HoldsSensorData {
   function terminate() public onlyEditor isActive {
     hasBeenTerminated = true;
     emit ShipmentTerminated(msg.sender);
+  }
+
+  /**
+   * @notice Adds uploaders to the sensorDataUploaders mapping. Overrides super to add modifiers.
+   * @param _uploaders Array of addresses to add to the sensorDataUploaders mapping.
+   */
+  function addSensorDataUploaders(address[] _uploaders) public onlyEditor isActive {
+    super.addSensorDataUploaders(_uploaders);
+  }
+
+  /**
+   * @notice Removes uploaders from the sensorDataUploaders mapping. Overrides super to add modifiers.
+   * @param _uploaders Array of addresses to remove from the sensorDataUploaders mapping.
+   */
+  function removeSensorDataUploaders(address[] _uploaders) public onlyEditor isActive {
+    super.removeSensorDataUploaders(_uploaders);
   }
 
   /**

@@ -14,7 +14,7 @@ contract Fr8Inspection is Fr8Permissioned, LockedToDataHash {
    * @notice approvals mapping contains results of inspection
    * @dev 2 => Approved; 1 => Rejected
    */
-  mapping (address => uint) public approvals;
+  mapping (address => uint8) public approvals;
 
   /**
    * @notice The Fr8Inspection constructor sender account to the owners mapping.

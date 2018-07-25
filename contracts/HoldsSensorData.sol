@@ -15,6 +15,7 @@ contract HoldsSensorData {
 
   mapping (address => bool) public sensorDataUploaders;
   SensorDataPair[] public dataCollections;
+  uint32 public numDataCollections = 0;
 
   /**
    * @notice Event emitted after any calls that modify data uploaders.
@@ -63,6 +64,7 @@ contract HoldsSensorData {
    */
   function addDataCollection(string _dataCollectionRef, bytes32 _dataCollectionHash) public onlySensorDataUploader {
     dataCollections.push(SensorDataPair(_dataCollectionRef, _dataCollectionHash));
+    numDataCollections++;
     emit DataCollectionAdded(_dataCollectionRef, _dataCollectionHash);
   }
 }
