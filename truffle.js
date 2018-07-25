@@ -1,8 +1,10 @@
 require('dotenv').config();
+require('babel-register');
+require('babel-polyfill');
 
 const HDWalletProvider = require('truffle-hdwallet-provider-privkey');
 
-const privKeys = [process.env.SERVER_ETH_PRIVATE_KEY];
+const privKeys = process.env.SERVER_ETH_PRIVATE_KEY;
 const infuraProvider = (network) => {
   new HDWalletProvider(privKeys, `https://${network}.infura.io/${process.env.INFURA_API_KEY}`);
 };

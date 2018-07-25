@@ -3,8 +3,8 @@
   "version": "0.1",
   "description": "Fr8 Protocol Smart Contracts",
   "scripts": {
-    "prettier": "node_modules/.bin/prettier \"./src/**/*.js\" --write",
-    "build-contracts": "sol-merger './contracts/*.sol' ./build/merged"
+    "prettier": "node_modules/.bin/prettier \"./test/*.js\" --write",
+    "build-contracts": "sol-merger './migrations/*.sol' ./build/merged"
   },
   "dependencies": {
     "dotenv": "^5.0.1",

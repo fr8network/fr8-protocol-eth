@@ -52,6 +52,17 @@ contract Fr8Permissioned {
   }
 
   /**
+   * @notice Allows an owner to add readers.
+   * @param _protocolAddress Fr8 Protocol Address.
+   */
+  function setProtocolAddress(address _protocolAddress) public onlyOwner {
+    protocolAddress = _protocolAddress;
+    address[] memory wrappedNewAddress = new address[](1);
+    wrappedNewAddress[0] = _protocolAddress;
+    emit PermissionsChanged("PROTOCOL", "UPDATED", wrappedNewAddress);
+  }
+
+  /**
    * @notice Allows an owner to add other owners.
    * @param _owners Array of addresses to add to the owners mapping.
    */
@@ -82,17 +93,6 @@ contract Fr8Permissioned {
       readers[_readers[i]] = true;
     }
     emit PermissionsChanged("READER", "ADDED", _readers);
-  }
-
-  /**
-   * @notice Allows an owner to add readers.
-   * @param _protocolAddress Fr8 Protocol Address.
-   */
-  function setProtocolAddress(address _protocolAddress) public onlyOwner {
-    protocolAddress = _protocolAddress;
-    address[] memory wrappedNewAddress = new address[](1);
-    wrappedNewAddress[0] = _protocolAddress;
-    emit PermissionsChanged("PROTOCOL", "UPDATED", wrappedNewAddress);
   }
 
   /**
