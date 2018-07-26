@@ -1,6 +1,6 @@
 {
   "name": "fr8-protocol-eth",
-  "version": "0.1",
+  "version": "0.0.1",
   "description": "Fr8 Protocol Smart Contracts",
   "scripts": {
     "compile": "truffle compile",
