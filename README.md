@@ -6,7 +6,7 @@ Fr8 Protocol Smart Contracts v0.0.1
 Logistics as an industry has been in dire need of neutral, globally accepted protocol for connecting information systems. Current standards like EDI are beneficial, but as point- to-point solutions they fail to capitalize on network effects. The Fr8 Network is proposing Fr8 Protocol, a collection of rules, behaviors, and formats that specify a communication standard between two or more nodes on a network. Adoption of the protocol is driven by cost savings and efficiency gains powered through a tokenized economic engine.
 
 ## About this repo
-* The smart contracts contained in the repo are the building blocks of the Fr8 Protocol, which will operate both on- and off-chain
+* The smart contracts contained in the repo are the building blocks of the Fr8 Protocol, which will operate both on- and off-chain.
 * This is very first version of the Fr8 Smart Contracts. The design and functionality is subject to change as we develop, iterate, and improve the Protocol's architecture.
 
 ## Getting Started
