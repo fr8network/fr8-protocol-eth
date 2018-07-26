@@ -1,6 +1,7 @@
 # fr8-protocol-eth
+![Fr8 Network](http://i66.tinypic.com/97ikxz.png)
+
 Fr8 Protocol Smart Contracts v0.0.1
-![Fr8 Network](https://fr8.network/fr8-logo-meta.jpg)
 
 ## About Fr8 Protocol
 Logistics as an industry has been in dire need of neutral, globally accepted protocol for connecting information systems. Current standards like EDI are beneficial, but as point- to-point solutions they fail to capitalize on network effects. The Fr8 Network is proposing Fr8 Protocol, a collection of rules, behaviors, and formats that specify a communication standard between two or more nodes on a network. Adoption of the protocol is driven by cost savings and efficiency gains powered through a tokenized economic engine.
