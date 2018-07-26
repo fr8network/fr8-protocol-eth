@@ -3,14 +3,16 @@
   "version": "0.1",
   "description": "Fr8 Protocol Smart Contracts",
   "scripts": {
-    "prettier": "node_modules/.bin/prettier \"./test/*.js\" --write",
-    "build-contracts": "sol-merger './migrations/*.sol' ./build/merged"
+    "compile": "truffle compile",
+    "test": "truffle test",
+    "prettier": "node_modules/.bin/prettier \"./**/*.js\" --write",
+    "merge-contracts": "sol-merger './contracts/*.sol' ./build/merged"
   },
   "dependencies": {
     "dotenv": "^5.0.1",
     "openzeppelin-solidity": "1.9.0",
     "sol-merger": "^0.1.2",
-    "truffle": "^4.1.9",
+    "truffle": "^4.1.13",
     "truffle-hdwallet-provider-privkey": "^0.2.0"
   },
   "devDependencies": {

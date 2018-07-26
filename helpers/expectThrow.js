@@ -1,4 +1,4 @@
-export default async promise => {
+export default async (promise) => {
   try {
     await promise;
   } catch (error) {
@@ -11,10 +11,7 @@ export default async promise => {
     //       ganache log actually show an 'invalid jump' event.)
     const outOfGas = error.message.search('out of gas') >= 0;
     const revert = error.message.search('revert') >= 0;
-    assert(
-      invalidOpcode || outOfGas || revert,
-      'Expected throw, got \'' + error + '\' instead',
-    );
+    assert(invalidOpcode || outOfGas || revert, "Expected throw, got '" + error + "' instead");
     return;
   }
   assert.fail('Expected throw not received');
