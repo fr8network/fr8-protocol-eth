@@ -1,6 +1,6 @@
 # fr8-protocol-eth
 [![CircleCI](https://circleci.com/gh/fr8network/fr8-protocol-eth/tree/master.svg?style=shield)](https://circleci.com/gh/fr8network/fr8-protocol-eth/tree/master)
-
+[![Telegram](https://img.shields.io/badge/9k+-telegram-blue.svg)](https://t.me/fr8network)
 
 ![Fr8 Network](http://i66.tinypic.com/97ikxz.png)
 
