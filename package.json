@@ -4,7 +4,7 @@
   "description": "Fr8 Protocol Smart Contracts",
   "scripts": {
     "compile": "truffle compile",
-    "test": "truffle test",
+    "test": "truffle test --network test",
     "prettier": "node_modules/.bin/prettier \"./**/*.js\" --write",
     "merge-contracts": "sol-merger './contracts/*.sol' ./build/merged"
   },
@@ -25,6 +25,7 @@
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.0",
+    "ganache-cli": "^6.1.6",
     "prettier": "^1.12.1"
   }
 }
