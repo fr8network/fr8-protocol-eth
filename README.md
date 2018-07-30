@@ -1,4 +1,7 @@
 # fr8-protocol-eth
+[![CircleCI](https://circleci.com/gh/fr8network/fr8-protocol-eth/tree/master.svg?style=shield)](https://circleci.com/gh/fr8network/fr8-protocol-eth/tree/master)
+
+
 ![Fr8 Network](http://i66.tinypic.com/97ikxz.png)
 
 Fr8 Protocol Smart Contracts v0.0.1
