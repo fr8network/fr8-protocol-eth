@@ -8,7 +8,8 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:8.5
-      
+        environment:
+          - NODE_ENV: test
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -39,4 +40,5 @@ jobs:
       - run:
           name: Run Tests
           command: yarn test
-
+          environment:
+            NODE_ENV: test
